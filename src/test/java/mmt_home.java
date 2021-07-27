@@ -82,10 +82,11 @@ public class mmt_home {
         driver.findElement(datepicker).click();
         Thread.sleep(3000);
         List<WebElement> dates=driver.findElements(By.xpath("//div[@aria-disabled='false']//div"));
-        for (int i=0;i<dates.size();i++)
-        {
-            System.out.println(dates.get(i).getText());
-        }
+        String first_month=driver.findElement(By.xpath("(//div[@class='DayPicker-Caption']//div)[1]")).getText();
+        System.out.println(first_month);
+        String second_month=driver.findElement(By.xpath("(//div[@class='DayPicker-Caption']//div)[2]")).getText();
+        System.out.println(second_month);
+
     }
 
 
