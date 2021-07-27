@@ -51,13 +51,13 @@ public class mmt_home {
         driver.findElement(from_city_label).click();
         By from_city_autotext = By.xpath("//div[@class='hsw_autocomplePopup autoSuggestPlugin ']/div/input");
         waitforelement(15, from_city_autotext);
-        driver.findElement(from_city_autotext).sendKeys("Mu");
+        driver.findElement(from_city_autotext).sendKeys("BLR");
         Thread.sleep(5000);
         List<WebElement> Listofitems = driver.findElements(By.xpath("//li[@role='option']"));
         for(int i=0;i<Listofitems.size();i++)
         {
             String text=Listofitems.get(i).getText();
-            if(text.contains("Mumbai"))
+            if(text.contains("Bengaluru"))
             {
                 Listofitems.get(i).click();
                 break;
@@ -67,13 +67,25 @@ public class mmt_home {
 
 }
     @Test
-    public void assert_FromCity()
+    public void TC003_assert_FromCity()
     {
         WebElement lbl_fromcity=driver.findElement(By.id("fromCity"));
         String actual_text=lbl_fromcity.getAttribute("value");
-        String expected_text="Mumbai";
+        String expected_text="Bengaluru";
         Assert.assertEquals(actual_text,expected_text);
 
+    }
+    @Test
+    public void TC004_selectDate() throws InterruptedException {
+        By datepicker=By.xpath("//div[@class='fsw_inputBox dates inactiveWidget ']/label");
+        waitforelement(15,datepicker);
+        driver.findElement(datepicker).click();
+        Thread.sleep(3000);
+        List<WebElement> dates=driver.findElements(By.xpath("//div[@aria-disabled='false']//div"));
+        for (int i=0;i<dates.size();i++)
+        {
+            System.out.println(dates.get(i).getText());
+        }
     }
 
 
